@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuite name="pytest" errors="0" failures="1" skipped="0" tests="3" time="1.204" timestamp="2026-11-10T09:00:00" hostname="ci-runner">
+  <testcase classname="tests.api.test_catalog" name="test_lists_products_with_pagination" time="0.402"/>
+  <testcase classname="tests.api.test_catalog" name="test_search_by_keyword[rain jacket]" time="0.380"/>
+  <testcase classname="tests.api.test_catalog" name="test_unknown_product_returns_404" time="0.422">
+    <failure message="AssertionError: assert 500 == 404">def test_unknown_product_returns_404(client):
+&gt;       assert client.get("/products/does-not-exist").status_code == 404
+E       AssertionError: assert 500 == 404</failure>
+  </testcase>
+</testsuite>

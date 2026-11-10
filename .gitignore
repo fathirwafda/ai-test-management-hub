@@ -1,0 +1,22 @@
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Local configuration: variables are documented in the README (no .env files are committed).
+.env
+.env.*
+
+# App data: SQLite database and uploaded evidence (npm run seed recreates the demo)
+data/
+.e2e-data/
+.screenshots-data/
+uploads/
+
+# Test output
+playwright-report/
+test-results/
+blob-report/
+coverage/
+
+.DS_Store
+*.log

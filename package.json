@@ -1,0 +1,46 @@
+{
+  "name": "ai-test-management-hub",
+  "version": "0.1.0",
+  "description": "A lightweight, AI-assisted test management app: test cases, runs with evidence, JUnit/Playwright import, dashboards and human-reviewed AI suggestions.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "postinstall": "npm run build -w @hub/shared",
+    "dev": "concurrently -k -n shared,api,web -c gray,blue,magenta \"npm run dev -w @hub/shared\" \"npm run dev -w @hub/api\" \"npm run dev -w @hub/web\"",
+    "build": "npm run build -w @hub/shared && npm run build -w @hub/api && npm run build -w @hub/web",
+    "start": "node apps/api/dist/server.js",
+    "seed": "npm run seed -w @hub/api",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "npm run build -w @hub/shared && tsc --noEmit -p tsconfig.json && npm run typecheck --workspaces --if-present",
+    "test": "npm run test:unit && npm run test:api",
+    "test:unit": "npm run test:unit -w @hub/api",
+    "test:api": "npm run test:api -w @hub/api",
+    "test:e2e": "playwright test",
+    "screenshots": "playwright test --config playwright.screenshots.config.ts",
+    "check": "npm run lint && npm run format:check && npm run typecheck && npm test && npm run build && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^24.19.2",
+    "concurrently": "^10.0.7",
+    "eslint": "^10.14.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-playwright": "^2.12.2",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "prettier": "^3.9.10",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.2"
+  }
+}

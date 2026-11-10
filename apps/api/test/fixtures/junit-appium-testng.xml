@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestSuite" tests="2" skipped="0" failures="1" errors="0" time="140.2">
+  <testcase name="signsInWithEmail" classname="com.larkspur.mobile.android.LoginTest" time="18.9"/>
+  <testcase name="paysWithGooglePay" classname="com.larkspur.mobile.android.CheckoutTest" time="121.3">
+    <failure message="Could not start a new session. Original error: emulator device offline" type="org.openqa.selenium.SessionNotCreatedException"><![CDATA[org.openqa.selenium.SessionNotCreatedException: Could not start a new session.
+Original error: emulator device offline
+	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:89)]]></failure>
+    <system-err><![CDATA[[ADB] Device 'emulator-5554' did not come online within 120000 ms]]></system-err>
+  </testcase>
+</testsuite>

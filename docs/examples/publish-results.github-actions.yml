@@ -1,0 +1,32 @@
+# Example: publish test results to the Test Management Hub from another repository's workflow.
+# Add HUB_URL (e.g. https://test-hub.internal.example) as a repository variable.
+# The hub has no built-in authentication: expose it only on a trusted network or behind your own proxy.
+name: Tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # ...run your tests here. Examples of report locations:
+      #   Maven Surefire (JUnit 5, REST Assured, Selenium, Appium): target/surefire-reports/*.xml
+      #   pytest:      pytest --junitxml=reports/junit.xml
+      #   Jest:        jest --reporters=default --reporters=jest-junit
+      #   Playwright:  PLAYWRIGHT_JSON_OUTPUT_NAME=results.json npx playwright test --reporter=json
+
+      - name: Publish results to the Test Management Hub
+        if: ${{ !cancelled() }}
+        env:
+          HUB_URL: ${{ vars.HUB_URL }}
+        run: |
+          curl --fail-with-body -sS -X POST \
+            -F file=@results.json \
+            -F format=auto \
+            -F platform=Web \
+            -F runName="CI #${GITHUB_RUN_NUMBER} (${GITHUB_REF_NAME})" \
+            -F environment=ci \
+            -F build="${GITHUB_SHA::7}" \
+            "${HUB_URL}/api/projects/1/imports"

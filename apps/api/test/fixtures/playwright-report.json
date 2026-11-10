@@ -1,0 +1,112 @@
+{
+  "config": { "version": "1.65.0", "projects": [{ "name": "chromium" }, { "name": "webkit" }] },
+  "suites": [
+    {
+      "title": "e2e/checkout.spec.ts",
+      "file": "e2e/checkout.spec.ts",
+      "line": 0,
+      "column": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Checkout",
+          "file": "e2e/checkout.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "pays with a saved card",
+              "ok": true,
+              "tags": ["@smoke"],
+              "file": "e2e/checkout.spec.ts",
+              "line": 12,
+              "column": 7,
+              "tests": [
+                { "projectName": "chromium", "status": "expected", "results": [{ "status": "passed", "duration": 14800, "retry": 0, "errors": [], "attachments": [] }] },
+                { "projectName": "webkit", "status": "expected", "results": [{ "status": "passed", "duration": 15950, "retry": 0, "errors": [], "attachments": [] }] }
+              ]
+            },
+            {
+              "title": "shows an error for an expired discount code",
+              "ok": false,
+              "tags": [],
+              "file": "e2e/checkout.spec.ts",
+              "line": 40,
+              "column": 7,
+              "tests": [
+                {
+                  "projectName": "chromium",
+                  "status": "unexpected",
+                  "results": [
+                    {
+                      "status": "failed",
+                      "duration": 30042,
+                      "retry": 0,
+                      "error": {
+                        "message": "\u001b[31mTimeoutError: locator.click: Timeout 30000ms exceeded.\u001b[39m\nCall log:\n  - waiting for getByRole('button', { name: 'Apply code' })",
+                        "stack": "TimeoutError: locator.click: Timeout 30000ms exceeded.\n    at /repo/e2e/checkout.spec.ts:58:52"
+                      },
+                      "errors": [],
+                      "attachments": [
+                        { "name": "screenshot", "contentType": "image/png", "path": "/repo/test-results/checkout-expired-chromium/test-failed-1.png" },
+                        { "name": "trace", "contentType": "application/zip", "path": "/repo/test-results/checkout-expired-chromium/trace.zip" },
+                        { "name": "stdout", "contentType": "text/plain", "body": "aW5saW5lIGJvZHk=" }
+                      ]
+                    }
+                  ]
+                },
+                { "projectName": "webkit", "status": "expected", "results": [{ "status": "passed", "duration": 6400, "retry": 0, "errors": [], "attachments": [] }] }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e/cart.spec.ts",
+      "file": "e2e/cart.spec.ts",
+      "line": 0,
+      "column": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Cart",
+          "file": "e2e/cart.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "adds a product from the product page",
+              "ok": true,
+              "tags": [],
+              "file": "e2e/cart.spec.ts",
+              "line": 8,
+              "column": 7,
+              "tests": [
+                {
+                  "projectName": "chromium",
+                  "status": "flaky",
+                  "results": [
+                    { "status": "failed", "duration": 5100, "retry": 0, "error": { "message": "expect(locator).toBeVisible() failed" }, "errors": [], "attachments": [] },
+                    { "status": "passed", "duration": 5230, "retry": 1, "errors": [], "attachments": [] }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "saves the cart for later [TC-14]",
+              "ok": true,
+              "tags": ["@wip"],
+              "file": "e2e/cart.spec.ts",
+              "line": 30,
+              "column": 7,
+              "tests": [{ "projectName": "chromium", "status": "skipped", "results": [{ "status": "skipped", "duration": 0, "retry": 0, "errors": [], "attachments": [] }] }]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": { "startTime": "2026-11-10T09:00:00.000Z", "duration": 61000, "expected": 2, "unexpected": 1, "flaky": 1, "skipped": 1 }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="API regression" tests="4" failures="1" errors="0" skipped="0" time="6.2">
+  <testsuite name="com.larkspur.api.CatalogApiTest" tests="2" failures="0" time="1.1">
+    <testcase name="listsProductsWithPagination" classname="com.larkspur.api.CatalogApiTest" time="0.801"/>
+    <testcase name="searchesByKeyword" classname="com.larkspur.api.CatalogApiTest" time="0.312"/>
+  </testsuite>
+  <testsuite name="com.larkspur.api.CartApiTest" tests="2" failures="1" time="5.1">
+    <testcase name="rejectsExpiredDiscountCode" classname="com.larkspur.api.CartApiTest" time="0.498">
+      <failure message="Expected status code &lt;422&gt; but was &lt;200&gt;." type="java.lang.AssertionError">java.lang.AssertionError: Expected status code &lt;422&gt; but was &lt;200&gt;.</failure>
+    </testcase>
+    <testcase name="limitsQuantityPerOrder" classname="com.larkspur.api.CartApiTest" time="0.420"/>
+  </testsuite>
+</testsuites>

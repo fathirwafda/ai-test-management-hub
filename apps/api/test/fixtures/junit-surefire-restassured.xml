@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Larkspur API regression" tests="6" failures="1" errors="1" skipped="1" time="12.5">
+  <testsuite name="com.larkspur.api.CartApiTest" tests="3" failures="1" errors="0" skipped="0" time="2.4">
+    <properties>
+      <property name="java.version" value="21"/>
+    </properties>
+    <testcase name="addsItemAndRecalculatesTotal" classname="com.larkspur.api.CartApiTest" time="0.931"/>
+    <testcase name="rejectsExpiredDiscountCode" classname="com.larkspur.api.CartApiTest" time="0.512">
+      <failure message="1 expectation failed.&#10;Expected status code &lt;422&gt; but was &lt;200&gt;." type="java.lang.AssertionError">java.lang.AssertionError: 1 expectation failed.
+Expected status code &lt;422&gt; but was &lt;200&gt;.
+	at com.larkspur.api.CartApiTest.rejectsExpiredDiscountCode(CartApiTest.java:88)</failure>
+      <system-out>POST /cart/discount code=SPRING23 -&gt; 200 OK</system-out>
+    </testcase>
+    <testcase name="appliesValidDiscountCode" classname="com.larkspur.api.CartApiTest" time="0.640">
+      <flakyFailure message="Read timed out" type="java.net.SocketTimeoutException">java.net.SocketTimeoutException: Read timed out</flakyFailure>
+    </testcase>
+  </testsuite>
+  <testsuite name="com.larkspur.api.CheckoutApiTest" tests="3" failures="0" errors="1" skipped="1" time="10.1">
+    <testcase name="placesOrderWithSavedCard" classname="com.larkspur.api.CheckoutApiTest" time="30.050">
+      <error message="Connection refused: payments-sandbox.example.test/10.0.0.12:443" type="java.net.ConnectException">java.net.ConnectException: Connection refused
+	at com.larkspur.api.CheckoutApiTest.placesOrderWithSavedCard(CheckoutApiTest.java:41)</error>
+    </testcase>
+    <testcase name="publishesOrderCreatedEvent" classname="com.larkspur.api.CheckoutApiTest" time="4.870"/>
+    <testcase name="refundsPartialOrder" classname="com.larkspur.api.CheckoutApiTest" time="0">
+      <skipped message="Refunds are disabled on staging"/>
+    </testcase>
+  </testsuite>
+</testsuites>
